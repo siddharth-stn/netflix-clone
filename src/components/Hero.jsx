@@ -21,7 +21,6 @@ const Hero = ({ children }) => {
           <button className="bg-white rounded-md text-black pl-5 pr-6 py-2 text-xl font-bold shadow-lg"><FontAwesomeIcon icon={faCaretRight} />Play</button>
           <button className="bg-gray-800 rounded-md text-white pl-6 pr-7 py-2 text-xl font-bold shadow-lg"><FontAwesomeIcon icon={faCircleInfo} /> More Info</button>
         </div>
-
       </div>
     </div>
   )

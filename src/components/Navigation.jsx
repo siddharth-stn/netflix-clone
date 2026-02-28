@@ -3,10 +3,32 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { useState, useEffect } from "react";
 
 const Navigation = () => {
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 5) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    return (
+      () => {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    )
+  }, [])
+
   return (
-    <div className="navbar fixed z-50 w-full top-0 left-0 flex items-center text-white px-15 py-4.5 bg-linear-to-b from-black/60 via-black/40 to-transparent">
+    <div className={`transition-colors duration-500 navbar fixed z-50 w-full top-0 left-0 flex items-center text-white px-15 py-4.5 bg-linear-to-b from-black/60 via-black/40 to-transparent ${isScrolled ? "bg-black" : "bg-transparent"}`}>
       <div className="logo w-22">
         <img src={Netflix_Icon} alt="Logo" />
       </div>
